@@ -16,7 +16,7 @@
         	if (password_verify($_POST['password'], $row['password'])) {
 				session_start();
 				$_SESSION["email"] = $_POST['email'];
-				header("Location: registreer.php");
+				header("Location: adminboard.php");
 			} elseif (!isset($row['password'])) {
 	            throw new Exception('Ongeldig emailadres!');
 	        } else {
@@ -102,7 +102,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<label for="email">Email:</label>	
 				</div>
 				<div class="col-md-9">
@@ -111,7 +111,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<label for="password">Password:</label>
 				</div>
 				<div class="col-md-9">
@@ -120,7 +120,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">	
+				<div class="col-md-3">	
 				</div>
 				<div class="col-md-9">
 					<input class="submit" type="submit" value="Login" name="UserLogin" />
@@ -156,7 +156,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<label for="email">Email:</label>
 				</div>
 				<div class="col-md-9">
@@ -165,7 +165,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<label for="password">Password:</label>
 				</div>
 				<div class="col-md-9">
@@ -174,7 +174,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">	
+				<div class="col-md-3">	
 				</div>
 				<div class="col-md-9">
 					<input class="submit" type="submit" value="Login" name="AdminLogin" />
@@ -187,5 +187,6 @@
 
        	</div>
 	</div>
+</div>
 </body>
 </html>
