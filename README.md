@@ -4,12 +4,16 @@ Score level 1
 
 - gebruikers
 	kunnen registreren + inloggen
+
 	kunnen feature requests insturen voor een specifiek project “vb: ik wil een foto aan mijn profiel kunnen toevoegen”
+
 	kunnen stemmen op een feature dmv AJAX
+
 	kunnen slechts één keer stemmen op een bepaalde feature
 
 - admin
 	moet kunnen inloggen
+
 	moet projecten kunnen aanmaken, bewerken en verwijderen vb: “Facebook, Gmail, one.weareimd.be, …”
 
 
@@ -17,10 +21,12 @@ Score level 2
 
 - gebruikers
 	kunnen een profielfoto opladen
+
 	kunnen hun eigen feature requests verwijderen en bewerken
 
 - admin
 	kan bijkomende admins aanmaken en verwijderen
+
 	kan features verwijderen uit het systeem
 
 
@@ -28,12 +34,16 @@ Score level 3
 
 - gebruikers
 	kunnen inloggen via Facebook
+
 	kunnen moderator worden wanneer hun features in totaal meer dan 20x een up­vote kregen (minstens 3 ingezonden features nodig, 1 feature met 20 stemmen telt niet)
+
 	als moderator kan je features request als “ongepast” markeren die tijdelijk uit het systeem verwijderd worden (markeer via AJAX)
 
 - admin
 	kan een moderator verwijderen
+
 	kan een moderator manueel toevoegen
+	
 	kan “ongepaste” feature requests van moderators definitief verwijderen of terug toevoegen via AJAX
 
 
