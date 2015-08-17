@@ -74,13 +74,13 @@
 
 		public function ShowProjects() {
 			$conn = Db::getInstance();
-			$allProjects = $conn->query("SELECT * FROM tblprojects ORDER BY id DESC");
+			$allProjects = $conn->query("SELECT * FROM tblprojects ORDER BY up DESC");
 			return $allProjects;
 		}
 
 		public function ShowRecentProjects() {
 			$conn = Db::getInstance();
-			$allProjects = $conn->query("SELECT * FROM tblprojects  ORDER BY id DESC LIMIT 3");
+			$allProjects = $conn->query("SELECT * FROM tblprojects  ORDER BY up DESC LIMIT 3");
 			return $allProjects;
 		}
 	}

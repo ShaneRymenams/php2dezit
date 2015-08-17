@@ -145,7 +145,7 @@
 			<div class="col col-md-6">
 				<div class="row">
 					<div class="col-md-12">
-						<legend>Latest</legend>
+						<legend>Latest Projects</legend>
 						<br />
 					</div> <!-- END COL -->
 				</div> <!-- END ROW -->

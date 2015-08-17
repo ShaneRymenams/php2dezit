@@ -95,17 +95,20 @@
 
 </head>
 <body>
-	
-	<!-- <div class="navbar navbar-default">
-   		<div class="navbar-header">
-    		<a class="navbar-nav" href="index.php"><img class="logo" src="images/logo2.png" alt="The Rent A Student Logo" width="55%"></a>
-       	</div>
-      	<ul class="nav navbar-nav">
-          	<li><a href="index.php">Home</a></li>
-       	</ul>
-   	</div> -->
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-nav" style="margin-top:15px;" href="index.php">FeatureList</a>
+			</div> <!-- END NAVBAR-HEADER -->
+			<ul class="nav navbar-nav pull-right">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test2</a></li>
+			</ul>
+		</div> <!-- END CONTAINER -->
+	</div> <!-- END NAVBAR --> 
 
-<div class="container-fluid">
+<div class="container">
  <br>
    	<div class="row intro2">
        	        	
