@@ -98,12 +98,12 @@
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-nav" style="margin-top:15px;" href="index.php">FeatureList</a>
+				<a class="navbar-brand" href="index.php">FeatureList</a>
 			</div> <!-- END NAVBAR-HEADER -->
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test2</a></li>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="registreer.php">Registreer</a></li>
 			</ul>
 		</div> <!-- END CONTAINER -->
 	</div> <!-- END NAVBAR --> 

@@ -2,8 +2,7 @@
 
 	include_once("Db.class.php");
 	
-	class Admin
-	{
+	class Admin {
 		
 		private $m_sName;
 		private $m_sFirstname;
@@ -103,7 +102,7 @@
 		public function UpdateAccount(){
 			$conn = Db::getInstance();
 			$statement = $conn->prepare("UPDATE tbladmin SET firstname = :firstname,
-																name = :name,
+																lastname = :name,
 																email = :email,
 																password = :password
 															    WHERE id = :id
@@ -127,10 +126,10 @@
 		public function ShowAccounts() {
 			//alle accounts returnen
 			$conn = Db::getInstance();
-			$allAcc = $conn->query("SELECT id, email FROM tbladmin");
+			$allAcc = $conn->query("SELECT * FROM tbladmin");
 			return $allAcc;
 
-			header('Location:adminaccounts.php');
+			header('Location:adminboard.php');
 		}
 	}
 ?>
