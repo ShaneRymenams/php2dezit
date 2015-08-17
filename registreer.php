@@ -195,7 +195,7 @@
 				<div class="col-md-4">	
 				</div>
 				<div class="col-md-8">
-					<input class="submit" type="submit" value="Registreer" name="UserRegister"/>
+					<input class="submit btn btn-default" type="submit" value="Registreer" name="UserRegister"/>
 				</div>
 			</div>	
 			</form>

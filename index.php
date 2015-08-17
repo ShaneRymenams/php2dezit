@@ -1,5 +1,7 @@
 <?php  
 	include_once("classes/Projects.class.php");
+	include_once("classes/Admin.class.php");
+	include_once("classes/Users.class.php");
 	include_once('ajax/config.php');
 	
 	$p = new Project();
@@ -11,7 +13,7 @@
 			$p->Title = $_POST['title'];
 			$p->Description = $_POST['description'];
 			$p->SaveProject();
-
+			header("Location: index.php");
 			$succes = "Project is toegevoegd!";
 		} catch(Exception $e) {
 			$error = $e->getMessage();
@@ -22,13 +24,59 @@
 		try {	
 			$b->Id = $_POST['id'];
 			$b->DeleteProject();
-
+			header("Location: adminboard.php");
 			$succes = "Project is verwijderd!";
 		} catch(Exception $e) {
 			$error = $e->getMessage();
 		}
 	}
 
+
+	$a = new Admin();
+	$u = new User();
+
+	if(!empty($_POST['AdminLogin'])) {
+		try {	
+			$conn = Db::getInstance();
+			$statement = $conn->prepare("SELECT * FROM tbladmin WHERE email=?");
+			$statement->execute(array($_POST['email']));
+        	$row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        	if (password_verify($_POST['password'], $row['password'])) {
+				session_start();
+				$_SESSION["email"] = $_POST['email'];
+				header("Location: adminboard.php");
+			} elseif (!isset($row['password'])) {
+	            throw new Exception('Ongeldig emailadres!');
+	        } else {
+	            throw new Exception("Ongeldig wachtwoord!");
+	        }
+	        
+		} catch(Exception $e) {
+			$erroradmin = $e->getMessage();
+		}
+	}
+
+	if(!empty($_POST['UserLogin'])) {
+		try {	
+			$conn = Db::getInstance();
+			$statement = $conn->prepare("SELECT * FROM tblusers WHERE email=?");
+			$statement->execute(array($_POST['email']));
+        	$row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        	if (password_verify($_POST['password'], $row['password'])) {
+				session_start();
+				$_SESSION["useremail"] = $_POST['email'];
+				header("Location: registreer.php");
+			} elseif (!isset($row['password'])) {
+	            throw new Exception('Ongeldig emailadres!');
+	        } else {
+	            throw new Exception("Ongeldig wachtwoord!");
+	        }
+		} catch(Exception $e) {
+			$erroruser = $e->getMessage();
+		}
+	}
 	
 ?><!doctype html>
 
@@ -54,7 +102,7 @@
 		var parent = $(this);
 
 		if(name=='up') {
-			$(this).fadeIn(200).html('<img src="dot.gif" align="absmiddle">');
+			$(this).fadeIn(200).html('<img src="images/ajax-loader.gif" align="absmiddle">');
 			$.ajax({
 				type: "POST",
 				url: "up_vote.php",
@@ -66,7 +114,7 @@
 			  	}  
 			});
 		} else {
-			$(this).fadeIn(200).html('<img src="dot.gif" align="absmiddle">');
+			$(this).fadeIn(200).html('<img src="images/ajax-loader.gif" align="absmiddle">');
 			$.ajax({
 				type: "POST",
 				url: "down_vote.php",
@@ -143,14 +191,14 @@
 				    		$id= $row['id'];
 							$up= $row['up'];
 							$down= $row['down'];
-				    		echo '<div class="row"><div class="col col-md-11">';
+				    		echo '<div class="row"><div class="col col-md-9">';
 				    		echo '<li id="item_'.$row['id'].'">';
 							echo '<div><p><strong>Title:</strong> ' .$row['title'].'</p></div>';
 							echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
 							echo '</div>'; // END COL
-							echo '<div class="col col-md-1">';
-							echo '<div class="up"><a href="" class="vote" id="'. $id . '" name="up">' . $up . '</a></div>';
-							echo '<div class="down"><a href="" class="vote" id="'. $id .'" name="down">' . $down .'</a></div>';
+							echo '<div class="col col-md-3 pull-right">';
+							echo '<div class="up btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> <a href="" class="vote" id="'. $id . '" name="up">' . $up . '</a></div>';
+							echo '<div class="down btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> <a href="" class="vote" id="'. $id .'" name="down">' . $down .'</a></div>';
 							echo '</div>'; // END COL
 							echo '</div>'; // END ROW
 							echo '<hr>';
@@ -184,7 +232,7 @@
 								<div class="col-md-3">	
 								</div> <!-- END COL -->
 								<div class="col-md-9">
-									<input class="submit" type="submit" value="Login" name="UserLogin" />
+									<input class="submit btn btn-default" type="submit" value="Login" name="UserLogin" />
 								</div> <!-- END COL -->
 							</div> <!-- END ROW -->
 
@@ -243,7 +291,7 @@
 									<div class="col-md-3">	
 									</div> <!-- END COL -->
 									<div class="col-md-9">
-										<input class="submit" type="submit" value="Login" name="AdminLogin" />
+										<input class="submit btn btn-default" type="submit" value="Login" name="AdminLogin" />
 									</div> <!-- END COL -->
 								</div> <!-- END ROW -->
 							</form> 

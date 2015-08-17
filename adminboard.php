@@ -79,7 +79,7 @@
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-nav" href="index.php">FeatureList</a>
+				<a class="navbar-nav" style="margin-top:15px;" href="index.php">FeatureList</a>
 			</div> <!-- END NAVBAR-HEADER -->
 			<ul class="nav navbar-nav pull-right">
 				<li><a href="#">Home</a></li>
@@ -133,7 +133,7 @@
 						<div class="col-md-3">	
 						</div> <!-- END COL -->
 						<div class="col-md-9">
-							<input class="submit" type="submit" value="Add Project" name="AddProject" />
+							<input class="submit btn btn-default" type="submit" value="Add Project" name="AddProject" />
 						</div> <!-- END COL -->
 					</div> <!-- END ROW -->
 				</form>
@@ -155,14 +155,19 @@
 						<ul id="responds">
 						    <?php  
 						    	while($row = $allProjects->fetch(PDO::FETCH_ASSOC)) {
+						    		$id= $row['id'];
+									$up= $row['up'];
+									$down= $row['down'];
 						    		echo '<div class="row"><div class="col col-md-9">';
 						    		echo '<li id="item_'.$row['id'].'">';
 									echo '<div><p><strong>Title:</strong> ' .$row['title'].'</p></div>';
 									echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
+									echo '<div class="up btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> <p class="vote" id="'. $id . '" name="up">' . $up . '</p></div>';
+									echo '<div class="down btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> <p class="vote" id="'. $id .'" name="down">' . $down .'</p></div>';
 									echo '</div>'; // END COL
 									echo '<div class="col col-md-3">';
-									echo '<ul class="nav nav-pills"><li class="del_wrapper"><button class="submit glyphicon glyphicon-remove del_button" type="submit" id="del-'.$row["id"].'" name="DeleteProject"/></li>';
-									echo '<li class="edit_wrapper"><button class="submit glyphicon glyphicon-pencil edit_button" type="submit" id="edit-'.$row["id"].'" name="EditProject"/></li>';
+									echo '<ul class="nav nav-pills"><li class="del_wrapper"><button class="submit btn btn-default glyphicon glyphicon-remove del_button" type="submit" id="del-'.$row["id"].'" name="DeleteProject"/></li>';
+									echo '<li class="edit_wrapper"><button class="submit btn btn-default glyphicon glyphicon-pencil edit_button" type="submit" id="edit-'.$row["id"].'" name="EditProject"/></li>';
 									echo '</ul>';
 									echo '</div>'; // END COL
 									echo '</div>'; // END ROW

@@ -68,7 +68,7 @@
 			$statement->bindValue(':id', $this->Id );
 			$statement->execute();
 
-			header('Location:admindatums.php');
+			header('Location: adminboard.php');
 
 		}
 
