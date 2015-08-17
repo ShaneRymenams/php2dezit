@@ -17,7 +17,7 @@
 		}
 	}
 
-	if(!empty($_POST["DeleteProject"])) {
+	if(!empty($_POST["FormDel"])) {
 		try {	
 			$b->Id = $_POST['id'];
 			$b->DeleteProject();
@@ -58,12 +58,14 @@
 		 
 			jQuery.ajax({
 			type: "POST", // HTTP method POST or GET
-			url: "ajax/DeleteProjects.php", //Where to make Ajax calls
+			url: "ajax/DeleteProject.php", //Where to make Ajax calls
 			dataType:"text", // Data type, HTML, json etc.
 			data:myData, //Form variables
 			success:function(response){
 				//on success, hide  element user wants to delete.
 				$('#item_'+DbNumberID).fadeOut();
+				$('#edit_'+DbNumberID).fadeOut();
+				$('#hr_'+DbNumberID).fadeOut();
 			},
 			error:function (xhr, ajaxOptions, thrownError){
 				//On error, we alert user
@@ -161,17 +163,17 @@
 						    		echo '<div class="row"><div class="col col-md-9">';
 						    		echo '<li id="item_'.$row['id'].'">';
 									echo '<div><p><strong>Title:</strong> ' .$row['title'].'</p></div>';
-									echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
-									echo '<div class="up btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> <p class="vote" id="'. $id . '" name="up">' . $up . '</p></div>';
-									echo '<div class="down btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> <p class="vote" id="'. $id .'" name="down">' . $down .'</p></div>';
+									echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div>';
+									echo '<div class="up btn btn-default"><p class="vote" id="'. $id . '" name="up"><span class="glyphicon glyphicon-thumbs-up"></span> '. $up . '</p></div>';
+									echo '<div class="down btn btn-default"><p class="vote" id="'. $id .'" name="down"><span class="glyphicon glyphicon-thumbs-down"></span> '. $down .'</p></div></li>';
 									echo '</div>'; // END COL
 									echo '<div class="col col-md-3">';
 									echo '<ul class="nav nav-pills"><li class="del_wrapper"><button class="submit btn btn-default glyphicon glyphicon-remove del_button" type="submit" id="del-'.$row["id"].'" name="DeleteProject"/></li>';
-									echo '<li class="edit_wrapper"><button class="submit btn btn-default glyphicon glyphicon-pencil edit_button" type="submit" id="edit-'.$row["id"].'" name="EditProject"/></li>';
+									echo '<li id="edit_'.$row['id'].'" class="edit_wrapper"><button class="submit btn btn-default glyphicon glyphicon-pencil edit_button" type="submit" id="edit-'.$row["id"].'" name="EditProject"/></li>';
 									echo '</ul>';
 									echo '</div>'; // END COL
 									echo '</div>'; // END ROW
-									echo '<hr>';
+									echo '<hr id="hr_'.$row['id'].'">';
 								}
 						    ?>
 						</ul>

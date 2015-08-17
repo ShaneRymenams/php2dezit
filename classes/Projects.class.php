@@ -59,7 +59,6 @@
 			$statement->bindValue(':description', $this->Description);
 			$statement->bindValue(':id', $this->Id );
 			$statement->execute();
-
 		}
 
 		public function DeleteProject(){
@@ -69,7 +68,6 @@
 			$statement->execute();
 
 			header('Location: adminboard.php');
-
 		}
 
 		public function ShowProjects() {

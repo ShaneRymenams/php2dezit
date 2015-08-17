@@ -67,7 +67,7 @@
         	if (password_verify($_POST['password'], $row['password'])) {
 				session_start();
 				$_SESSION["useremail"] = $_POST['email'];
-				header("Location: registreer.php");
+				header("Location: index.php");
 			} elseif (!isset($row['password'])) {
 	            throw new Exception('Ongeldig emailadres!');
 	        } else {

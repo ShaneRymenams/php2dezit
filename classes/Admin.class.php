@@ -114,9 +114,6 @@
 			$statement->bindValue(':password', $this->Password);
 			$statement->bindValue(':id', $this->Id );
 			$statement->execute();
-
-			//header('Location:studentAccount.php');
-
 		}
 
 		public function ShowAccount() {

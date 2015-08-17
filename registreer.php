@@ -28,7 +28,7 @@
 			$u->Save();
 
 			$success = "Uw profiel is aangemaakt.";
-
+			header("Location: index.php");
 		}
 			catch(Exception $e)
 			{
