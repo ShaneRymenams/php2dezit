@@ -163,9 +163,9 @@
 		
 		public function DeleteImage() {
 			$conn = Db::getInstance();
-			$statement = $conn->prepare("UPDATE tblbuddies SET buddieFoto = :foto WHERE buddieID = :id");
+			$statement = $conn->prepare("UPDATE tblusers SET foto = :picture WHERE id = :id");
 			$statement->bindValue(':id', $this->Id );
-			$statement->bindValue(':foto', $this->Foto );
+			$statement->bindValue(':picture', $this->Picture );
 			$statement->execute();
 		}
 

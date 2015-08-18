@@ -128,8 +128,8 @@
 							echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
 							echo '</div>'; // END COL
 							echo '<div class="col col-md-2 pull-right">';
-							echo '<div id="toolleft" data-toggle="tooltip" data-placement="left" title="Login to vote"><div class="up btn btn-default disabled"><a href="#" class="vote disabled" id="'. $id . '" name="up"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $up . '</a></div></div>';
-							echo '<div id="toolright" data-toggle="tooltip" data-placement="right" title="Login to vote"><div class="down btn btn-default disabled"><a href="#" class="vote disabled" id="'. $id .'" name="down"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $down .'</a></div></div>';
+							echo '<div id="toolleft" data-toggle="tooltip" data-placement="left" title="Login to vote"><div class="up btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-up"></span> <a href="#" class="vote disabled" id="'. $id . '" name="up">' . $up . '</a></div></div>';
+							echo '<div id="toolright" data-toggle="tooltip" data-placement="right" title="Login to vote"><div class="down btn btn-default disabled"><span class="glyphicon glyphicon-thumbs-down"></span> <a href="#" class="vote disabled" id="'. $id .'" name="down">' . $down .'</a></div></div>';
 							echo '</div>'; // END COL
 							echo '</div>'; // END ROW
 							echo '<hr>';

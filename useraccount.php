@@ -62,8 +62,8 @@
 	if(!empty($_POST["ImageDelete"])) {
 		try {	
 			
-			$b->Id = $_POST['studentID'];
-			$b->Foto = $_POST['foto'];
+			$b->Id = $_POST['id'];
+			$b->Picture = $_POST['picture'];
 			
 			$b->DeleteImage();
 		} catch(Exception $e) {

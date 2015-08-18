@@ -105,8 +105,8 @@
 							echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
 							echo '</div>'; // END COL
 							echo '<div class="col col-md-3 pull-right">';
-							echo '<div class="up btn btn-default"><a href="" class="vote" id="'. $id . '" name="up"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $up . '</a></div>';
-							echo '<div class="down btn btn-default"><a href="" class="vote" id="'. $id .'" name="down"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $down .'</a></div>';
+							echo '<div class="up btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> <a href="" class="vote" id="'. $id . '" name="up">' . $up . '</a></div>';
+							echo '<div class="down btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> <a href="" class="vote" id="'. $id .'" name="down">' . $down .'</a></div>';
 							echo '</div>'; // END COL
 							echo '</div>'; // END ROW
 							echo '<hr>';
