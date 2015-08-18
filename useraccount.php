@@ -84,6 +84,9 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  	<script src="js/bootstrap.min.js"></script>
+  	<script src="js/jquery.js"></script>
+  	<script src="js/additional-methods.js"></script>
   	<script src="js/validate.js"></script>
   	<script>
 		$(document).ready(function() {
@@ -143,7 +146,7 @@
 					</div>
 				<?php endif; ?>
 
-        		<form method="post" action="" class="form-horizontal">
+        		<form method="post" action="" class="form-horizontal" enctype="multipart/form-data">
 
             		<?php
 						while($acc = $showAcc->fetch(PDO::FETCH_ASSOC)) {
@@ -215,11 +218,6 @@
 			
 		</div> <!-- END ROW -->
 	</div> <!-- END CONTAINER-FLUID -->
-
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    
 </body>
 </html>

@@ -56,14 +56,11 @@
 					break;
 
 				case 'Picture':
-                    if ($p_vValue!="")
-	                    {
-	                        $this->m_sPicture = $p_vValue;
-	                    }
-                    else
-	                    {
-	                        $this->m_sPicture = null;
-	                    }
+                    if ($p_sValue!="") {
+	                    $this->m_sPicture = $p_sValue;
+	                } else {
+	                    $this->m_sPicture = null;
+	                }
                     break;
 				
 				case 'Id':
