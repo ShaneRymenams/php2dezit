@@ -44,43 +44,43 @@
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
-	$(function() {
+	// $(function() {
 
-		$(".vote").click(function() {
-		var id = $(this).attr("id");
-		var name = $(this).attr("name");
-		var dataString = 'id='+ id ;
-		var parent = $(this);
+	// 	$(".vote").click(function() {
+	// 	var id = $(this).attr("id");
+	// 	var name = $(this).attr("name");
+	// 	var dataString = 'id='+ id ;
+	// 	var parent = $(this);
 
-		if(name=='up') {
-			$(this).fadeIn(200).html('<img src="images/ajax-loader.gif" align="absmiddle">');
-			$.ajax({
-				type: "POST",
-				url: "up_vote.php",
-				data: dataString,
-				cache: false,
+	// 	if(name=='up') {
+	// 		$(this).fadeIn(200).html('<img src="images/ajax-loader.gif" align="absmiddle">');
+	// 		$.ajax({
+	// 			type: "POST",
+	// 			url: "up_vote.php",
+	// 			data: dataString,
+	// 			cache: false,
 
-				success: function(html) {
-					parent.html(html);
-			  	}  
-			});
-		} else {
-			$(this).fadeIn(200).html('<img src="images/ajax-loader.gif" align="absmiddle">');
-			$.ajax({
-				type: "POST",
-				url: "down_vote.php",
-				data: dataString,
-				cache: false,
+	// 			success: function(html) {
+	// 				parent.html(html);
+	// 		  	}  
+	// 		});
+	// 	} else {
+	// 		$(this).fadeIn(200).html('<img src="images/ajax-loader.gif" align="absmiddle">');
+	// 		$.ajax({
+	// 			type: "POST",
+	// 			url: "down_vote.php",
+	// 			data: dataString,
+	// 			cache: false,
 
-				success: function(html) {
-				   parent.html(html);
-				}
-			});
-		}
+	// 			success: function(html) {
+	// 			   parent.html(html);
+	// 			}
+	// 		});
+	// 	}
 
-		return false;
-		});
-	});
+	// 	return false;
+	// 	});
+	// });
 </script>
 </head>
 
