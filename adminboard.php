@@ -310,7 +310,7 @@
 							// echo '<hr id="hr_'.$row['id'].'">';
 						?>
 						</ul>
-						<p>* Om je eigen account aan te passen, ga je naar Profile rechtsboven.</p>
+						<p>* If you want to edit your own account, go to Profile in the right top corner.</p>
 					</div>
 				</div>
 			</div> <!-- END COL -->

@@ -5,15 +5,15 @@
 	    exit();
 	}
 
-	include_once("classes/Admin.class.php");
+	include_once("classes/Users.class.php");
 
-	$a = new Admin();
-	$b = new Admin();
+	$a = new User();
+	$b = new User();
 	$showAcc = $b->ShowAccount();
 
 	if(!empty($_POST["FormUpdate"])) {
 		try {	
-			$a->Name = $_POST['naam'];
+			$a->Lastname = $_POST['naam'];
 			$a->Firstname = $_POST['voornaam'];			
 			$a->Email = $_POST['email'];
 			$a->Password = $_POST['password'];
@@ -34,6 +34,38 @@
 
 			$succes = "Account is verwijderd!";
 
+		} catch(Exception $e) {
+			$error = $e->getMessage();
+		}
+	}
+
+	if(!empty($_POST["ImageUpload"])) {
+		try {	
+			$b->Id = $_POST['id'];
+			$b->Email = $_POST['email'];
+
+			$map = $_POST['email'];
+        	if(!file_exists("images/profpics/$map")) {
+            	mkdir("images/profpics/$map", 0777, true);
+        	}
+
+        	include_once("upload.php");
+
+        	$b->Picture = "images/profpics/".$_POST['email']."/".basename( $_FILES["fileToUpload"]["name"]);
+			
+			$b->UpdateImage();
+		} catch(Exception $e) {
+			$error = $e->getMessage();
+		}
+	}
+
+	if(!empty($_POST["ImageDelete"])) {
+		try {	
+			
+			$b->Id = $_POST['studentID'];
+			$b->Foto = $_POST['foto'];
+			
+			$b->DeleteImage();
 		} catch(Exception $e) {
 			$error = $e->getMessage();
 		}
@@ -89,8 +121,8 @@
 				<a class="navbar-nav" style="margin-top:15px;" href="index.php">FeatureList</a>
 			</div> <!-- END NAVBAR-HEADER -->
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="adminboard.php">Dashboard</a></li>
-				<li><a href="adminaccount.php">Profile</a></li>
+				<li><a href="userboard.php">Dashboard</a></li>
+				<li><a href="useraccount.php">Profile</a></li>
 			</ul>
 		</div> <!-- END CONTAINER -->
 	</div> <!-- END NAVBAR -->
@@ -147,6 +179,20 @@
 				    			echo '</div>';
 				  			echo '</div>';
 
+
+				  			echo '<div class="form-group">';
+				    			echo '<label for="fileToUpload" class="col-md-3 control-label">Profielafbeelding</label>';
+				    			
+				    			echo '<div class="col-md-9">';
+				    				echo '<img src="'.$acc['foto'].'" alt="Foto '.$acc['firstname']. '" />';
+				      				echo '<input type="file" name="fileToUpload" id="fileToUpload" class="fileupload btn btn-default" /><br/>
+						      				<input type="submit" class="submit btn btn-default" name="ImageUpload" value="Afbeelding uploaden">
+						      				<input type="submit" class="submit btn btn-default" name="ImageDelete" value="Afbeelding verwijderen">
+						      				';
+				    			echo '</div>';
+				  			echo '</div>';
+
+
 				  			echo '<div class="form-group">';
 				    			echo '<label for="" class="col-md-3 control-label"></label>';
 				    	
@@ -156,15 +202,17 @@
 				      						';
 				    			echo '</div>';
 				  			echo '</div>';
-
 				  			echo '<div class="col-md-3"></div>';
 				  			echo '<div class="col-md-9">';
 				    			echo '<input type="submit" class="submit btn btn-default col-md-12" name="FormDelete" value="Verwijder uw account">';
 				  			echo '</div>';
+
+
 						}
 					?>
 				</form>
 			</div> <!-- END COL -->
+			
 		</div> <!-- END ROW -->
 	</div> <!-- END CONTAINER-FLUID -->
 

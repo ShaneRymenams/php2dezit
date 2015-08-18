@@ -1,33 +1,17 @@
 <?php  
+	session_start();
+	if(!isset($_SESSION["email"])) {
+	    header("location:index.php");
+	    exit();
+	}
 	include_once("classes/Projects.class.php");
+	include_once("classes/Users.class.php");
 	include_once('ajax/config.php');
 
 	$p = new Project();
-	$b = new Project();
 	$allProjects = $p->ShowProjects();
 
-	if(!empty($_POST['AddProject'])) {
-		try {	
-			$p->Title = $_POST['title'];
-			$p->Description = $_POST['description'];
-			$p->SaveProject();
-			header("Location: index.php");
-			$succes = "Project is toegevoegd!";
-		} catch(Exception $e) {
-			$error = $e->getMessage();
-		}
-	}
-
-	if(!empty($_POST["DeleteProject"])) {
-		try {	
-			$b->Id = $_POST['id'];
-			$b->DeleteProject();
-			header("Location: adminboard.php");
-			$succes = "Project is verwijderd!";
-		} catch(Exception $e) {
-			$error = $e->getMessage();
-		}
-	}
+	
 
 ?><!doctype html>
 
@@ -91,11 +75,11 @@
 				<a class="navbar-brand" href="index.php">FeatureList</a>
 			</div> <!-- END NAVBAR-HEADER -->
 			<ul class="nav navbar-nav pull-right">
+				<li style="border-right:1px solid #e5e5e5;"><p style="margin-top:15px; margin-right:15px;">Howdy, <?php echo $_SESSION["email"];?></p></li>
 		    	<li><a href="index.php">Home</a></li>
-		    	<li><a href="login.php">Login</a></li>
-		    	<li><a href="registreer.php">Registreer</a></li>
+		    	<li><a href="useraccount.php">Profile</a></li>
+		    	<li><a href="logout.php">Logout</a></li>
 		    </ul>
-			
 		</div> <!-- END CONTAINER -->
 	</div> <!-- END NAVBAR -->
 	
@@ -121,8 +105,8 @@
 							echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
 							echo '</div>'; // END COL
 							echo '<div class="col col-md-3 pull-right">';
-							echo '<div class="up btn btn-default"><p class="vote" id="'. $id . '" name="up"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $up . '</p></div>';
-							echo '<div class="down btn btn-default"><p class="vote" id="'. $id .'" name="down"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $down .'</p></div>';
+							echo '<div class="up btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> <a href="" class="vote" id="'. $id . '" name="up">' . $up . '</a></div>';
+							echo '<div class="down btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> <a href="" class="vote" id="'. $id .'" name="down">' . $down .'</a></div>';
 							echo '</div>'; // END COL
 							echo '</div>'; // END ROW
 							echo '<hr>';

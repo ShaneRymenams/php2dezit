@@ -32,13 +32,13 @@
 		try {	
 			$conn = Db::getInstance();
 			$statement = $conn->prepare("SELECT * FROM tblusers WHERE email=?");
-			$statement->execute(array($_POST['useremail']));
+			$statement->execute(array($_POST['email']));
         	$row = $statement->fetch(PDO::FETCH_ASSOC);
 
         	if (password_verify($_POST['userpassword'], $row['password'])) {
 				session_start();
-				$_SESSION["useremail"] = $_POST['useremail'];
-				
+				$_SESSION['email'] = $_POST['email'];
+				header("Location: userboard.php");
 			} elseif (!isset($row['userpassword'])) {
 	            throw new Exception('Ongeldig emailadres!');
 	        } else {
@@ -104,39 +104,40 @@
 					<br />
 				</div>
 			</div>
-
+			
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-3 text-right" for="email">Email</label>
+					<div class="col-md-9">
+						<input class="form-control"type="text" id="useremail" name="email" placeholder="Email" />
+					</div> <!-- END COL -->
+				</div> <!-- END COL -->
+			</div> <!-- END ROW -->
+			<br>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-3 text-right" for="password">Password</label>
+					<div class="col-md-9">
+						<input class="form-control" type="password" id="userpassword" name="userpassword" placeholder="Password" />
+					</div> <!-- END COL -->
+				</div> <!-- END COL -->
+			</div> <!-- END ROW -->
+			<br>
 			<div class="row">
 				<div class="col-md-3">
-					<label for="email">Email:</label>	
 				</div> <!-- END COL -->
 				<div class="col-md-9">
-					<input type="text" id="useremail" name="useremail" placeholder="email" />
+					<input class="submit btn btn-default col col-md-12" type="submit" value="Login" name="UserLogin" />
 				</div> <!-- END COL -->
+				
 			</div> <!-- END ROW -->
-
-			<div class="row">
-				<div class="col-md-3">
-					<label for="password">Password:</label>
-				</div> <!-- END COL -->
-				<div class="col-md-9">
-					<input type="password" id="userpassword" name="userpassword" placeholder="password" />
-				</div> <!-- END COL -->
-			</div> <!-- END ROW -->
-
-			<div class="row">
-				<div class="col-md-3">	
-				</div> <!-- END COL -->
-				<div class="col-md-9">
-					<input class="submit btn btn-default" type="submit" value="Login" name="UserLogin" />
-				</div> <!-- END COL -->
-			</div> <!-- END ROW -->
-
+			<br>
 			<div class="row">
 				<div class="col-md-12">
 					<br/><a href="registreer.php" >Heb je nog geen account? Maak er dan snel een aan!</a>
 				</div> <!-- END COL -->
 			</div> <!-- END ROW -->
-
+			
 			<div class="row">
 				<div class="col-md-12">
 					<br/><a href="#" name="answer" onclick="ShowDiv()">Als je een admin bent, kan je hier inloggen</a>
@@ -166,28 +167,29 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-3">
-					<label for="email">Email:</label>
-				</div>
-				<div class="col-md-9">
-					<input type="text" id="email" name="email" placeholder="email" />
+				<div class="form-group">
+					<label class="control-label col-md-3 text-right" for="email">Email</label>
+					<div class="col-md-9">
+						<input class="form-control" type="text" id="email" name="email" placeholder="email" />
+					</div>
 				</div>
 			</div>
-
+			<br>
 			<div class="row">
-				<div class="col-md-3">
-					<label for="password">Password:</label>
-				</div>
-				<div class="col-md-9">
-					<input type="password" id="password" name="password" placeholder="password" />
+				<div class="form-group">
+					<label class="control-label col-md-3 text-right" for="password">Password</label>
+				
+					<div class="col-md-9">
+						<input class="form-control" type="password" id="password" name="password" placeholder="password" />
+					</div>
 				</div>
 			</div>
-
+			<br>
 			<div class="row">
 				<div class="col-md-3">	
 				</div>
 				<div class="col-md-9">
-					<input class="submit btn btn-default" type="submit" value="Login" name="AdminLogin" />
+					<input class="submit btn btn-default col col-md-12" type="submit" value="Login" name="AdminLogin" />
 				</div>
 			</div>
 

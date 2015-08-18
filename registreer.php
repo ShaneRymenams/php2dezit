@@ -16,15 +16,6 @@
 			$u->Password = $_POST['password'];
 			$u->CPassword = $_POST['cpassword'];
 
-			$map = $_POST['email'];
-        	if(!file_exists("images/profpics/$map")) {
-            	mkdir("images/profpics/$map", 0777, true);
-        	}
-
-        	// include_once("upload.php");
-
-        	// $s->Picture = "images/profpics/".$_POST['email']."/".basename( $_FILES["fileToUpload"]["name"]);
-
 			$u->Save();
 
 			$success = "Uw profiel is aangemaakt.";
@@ -137,66 +128,60 @@
 
 			<div class="row">
 				
-				<div class="col-md-4">
-					<label for="firstname">Voornaam</label> *<br/>
-				</div>
-				<div class="col-md-8">
-					<input type="text" id="firstname" name="firstname" placeholder="Voornaam"/>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-4">
-					<label for="lastname">Achternaam</label> *<br/>
-				</div>
-				<div class="col-md-8">
-					<input type="text" id="lastname" name="lastname" placeholder="Achternaam" />
+				<div class="form-group">
+					<label class="control-label col-md-4 text-right" for="firstname">Voornaam*</label> 
+					<div class="col-md-8">
+						<input class="form-control" type="text" id="firstname" name="firstname" placeholder="Voornaam"/>
+					</div>
 				</div>
 			</div>
-
+			<br>
 			<div class="row">
-				<div class="col-md-4">
-					<label for="email">Email</label> *<br/>
-				</div>
-				<div class="col-md-8">
-					<input type="text" id="email" name="email" placeholder="email" />
+				<div class="form-group">
+					<label class="control-label col-md-4 text-right" for="lastname">Achternaam*</label>
+				
+					<div class="col-md-8">
+						<input class="form-control" type="text" id="lastname" name="lastname" placeholder="Achternaam" />
+					</div>
 				</div>
 			</div>
-
-
+			<br>
 			<div class="row">
-				<div class="col-md-4">
-					<label for="password">Wachtwoord</label> *<br />
-				</div>
-				<div class="col-md-8">	
-					<input type="password" id="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+				<div class="form-group">
+					<label class="control-label col-md-4 text-right" for="email">Email*</label>
+					<div class="col-md-8">
+						<input class="form-control" type="text" id="email" name="email" placeholder="email" />
+					</div>
 				</div>
 			</div>
-
+			<br>
 			<div class="row">
-				<div class="col-md-4">
-					<label for="cpassword">Verifieer Wachtwoord</label> *<br />
-				</div>
-				<div class="col-md-8">	
-					<input type="password" id="cpassword" name="cpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+				<div class="form-group">
+					<label class="control-label col-md-4 text-right" for="password">Wachtwoord*</label>
+					<div class="col-md-8">	
+						<input class="form-control" type="password" id="password" name="password" placeholder="Wachtwoord" />
+					</div>
 				</div>
 			</div>
-
-			<!-- <div class="row">
-				<div class="col-md-4">
-					<label for="fileToUpload">Profielafbeelding</label> * <a title="Gelieve alleen een JPEG-, PNG- of GIF-bestandsformaat te gebruiken. De afbeelding mag niet groter zijn dan 1MB. Gelieve een grootte te behouden van 100x100px, voor een correcte weergave van uw profielfoto."><img src="http://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a>
-				</div>
-				<div class="col-md-8">	
-					<input type="file" name="fileToUpload" id="fileToUpload" class="fileupload" />
-				</div>
-			</div> -->
-
+			<br>
 			<div class="row">
-				<div class="col-md-4">	
+				<div class="form-group">
+					<label class="control-label col-md-4 text-right" for="cpassword">Verifieer Wachtwoord*</label>
+					<div class="col-md-8">	
+						<input class="form-control" type="password" id="cpassword" name="cpassword" placeholder="Verifieer Wachtwoord" />
+					</div>
 				</div>
-				<div class="col-md-8">
-					<input class="submit btn btn-default" type="submit" value="Registreer" name="UserRegister"/>
+			</div>
+			<br>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-4 text-right" for="cpassword"></label>
+					<div class="col-md-8">	
+						<input class="submit btn btn-default col-md-12" type="submit" value="Registreer" name="UserRegister"/>
+					</div>
 				</div>
+				
+				
 			</div>	
 			</form>
 
