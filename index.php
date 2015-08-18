@@ -81,7 +81,14 @@
 	// 	return false;
 	// 	});
 	// });
-</script>
+	</script>
+	<script type="text/javascript">
+	$(function () {
+		
+		$('[data-toggle="tooltip"]').tooltip()
+		$('#toolleft').tooltip('show')
+	})
+	</script>
 </head>
 
 <body>
@@ -115,14 +122,14 @@
 				    		$id= $row['id'];
 							$up= $row['up'];
 							$down= $row['down'];
-				    		echo '<div class="row"><div class="col col-md-9">';
+				    		echo '<div class="row"><div class="col col-md-10">';
 				    		echo '<li id="item_'.$row['id'].'">';
 							echo '<div><p><strong>Title:</strong> ' .$row['title'].'</p></div>';
 							echo '<div><p><strong>Description:</strong> ' .$row['description'].'</p></div></li>';
 							echo '</div>'; // END COL
-							echo '<div class="col col-md-3 pull-right">';
-							echo '<div class="up btn btn-default"><p class="vote" id="'. $id . '" name="up"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $up . '</p></div>';
-							echo '<div class="down btn btn-default"><p class="vote" id="'. $id .'" name="down"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $down .'</p></div>';
+							echo '<div class="col col-md-2 pull-right">';
+							echo '<div id="toolleft" data-toggle="tooltip" data-placement="left" title="Login to vote"><div class="up btn btn-default disabled"><a href="#" class="vote disabled" id="'. $id . '" name="up"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $up . '</a></div></div>';
+							echo '<div id="toolright" data-toggle="tooltip" data-placement="right" title="Login to vote"><div class="down btn btn-default disabled"><a href="#" class="vote disabled" id="'. $id .'" name="down"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $down .'</a></div></div>';
 							echo '</div>'; // END COL
 							echo '</div>'; // END ROW
 							echo '<hr>';
